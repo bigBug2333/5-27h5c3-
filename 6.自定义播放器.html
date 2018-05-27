@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      width: 800px;
+      height: 500px;
+      border: 1px solid #000;
+      border-radius: 10px;
+      box-shadow: 0 0 5px 2px #000;
+    }
+
+    .left {
+      float: left;
+      width: 80%;
+      height: 100%;
+    }
+
+    .videe_box {
+      width: 100%;
+      height: 85%;
+      background-color: #000;
+    }
+
+    /*video设置宽高只要设置一个就行，设置两个没用，等比例缩放*/
+    .videe_box video {
+      width: 100%;
+      height: 100%;
+    }
+
+    .control-box {
+      height: 15%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: 26px;
+      color: #f91;
+      cursor: pointer;
+    }
+
+    .icon-play {
+      flex: 1;
+    }
+
+    .icon-full {
+      flex: 1;
+    }
+
+    .icon-range1 {
+      flex: 7;
+    }
+
+    .icon-volume {
+      flex: 1;
+      position: relative;
+    }
+
+    .icon-volume:hover .icon-range2 {
+      display: block;
+    }
+
+    .icon-range2 {
+      position: absolute;
+      top: -72px;
+      left: -32px;
+      transform: rotate(-90deg);
+      display: none;
+    }
+
+    .right {
+      height: 100%;
+      float: left;
+      width: 20%;
+      background-color: #ccc;
+    }
+
+    .right li {
+      border-bottom: 1px solid #000;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <div class="left">
+    <div class="videe_box">
+      <!--谷歌浏览器在2018年1月份，63版本之后，禁用autoplay-->
+      <video src="movies/movie.mp4"></video>
+    </div>
+    <div class="control-box">
+      <span class="fa fa-play icon-play"></span>
+      <span class="fa fa-arrows-alt icon-full"></span>
+      <!--标签-->
+      <input type="range" class="icon-range1" min="0" max="100" value="0">
+      <span class="fa fa-volume-up icon-volume">
+        <input type="range" class="icon-range2" min="0" max="100" value="100">
+      </span>
+
+    </div>
+  </div>
+  <div class="right">
+    <ul>
+      <li>视频1</li>
+      <li>视频1</li>
+      <li>视频1</li>
+      <li>视频1</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+
+  var iconPlay = document.querySelector(".icon-play");
+  var video = document.querySelector("video");
+
+  //功能一：播放与暂停功能
+  //1. 给播放按钮注册点击事件
+  //2. 播放视频  修改小图标
+  iconPlay.addEventListener("click", function () {
+
+    if (this.classList.contains("fa-play")) {
+      //播放视频
+      video.play();
+      //删除fa-play，添加fa-pause
+      this.classList.remove("fa-play");
+      this.classList.add("fa-pause");
+    } else {
+      //暂停视频
+      video.pause();
+      //删除fa-pause，添加fa-play
+      this.classList.add("fa-play");
+      this.classList.remove("fa-pause");
+    }
+
+
+  });
+
+
+</script>
+
+</body>
+</html>

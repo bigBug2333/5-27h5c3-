@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .imgBox {
+            width: 121px;
+            height: 140px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+        
+        .infoBox {
+            width: 300px;
+            height: 50px;
+            margin: 10px auto;
+            border: 1px solid #000;
+        }
+        
+        .btn_wrap {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="imgBox">展示图片</div>
+<div class="infoBox">展示文字介绍</div>
+<div class="btn_wrap">
+    <button data-des="不知妻美" data-img-url="images/lqd.jpg">刘强东</button>
+    <button data-des="后悔创阿里" data-img-url="images/my.jpg">马云</button>
+    <button data-des="普通家庭" data-img-url="images/mht.jpg">马化腾</button>
+    <button data-des="一无所有" data-img-url="images/wjl.jpg">王健林</button>
+</div>
+    <script>
+        var btns = document.querySelectorAll("button");
+        var imgBox = document.querySelector(".imgBox");
+        var infoBox = document.querySelector(".infoBox");
+        for(var i = 0; i < btns.length; i++) {
+          btns[i].onclick = function () {
+            //获取当前按钮的自定义属性des
+            infoBox.innerText = this.dataset.des;
+            imgBox.innerHTML = "<img src='"+ this.dataset.imgUrl+"'>";
+          }
+        }
+    </script>
+      
+      
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $("button").on("click", function () {
+        //显示图片
+        $(".imgBox").html("<img src='" + $(this).data("imgUrl") + "'>");
+        //$(this).data("imgUrl")
+        //显示文字
+        $(".infoBox").text( $(this).data("des") );
+        });
+    </script>
+      
+</body>
+</html>

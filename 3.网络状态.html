@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 50px;
+            background-color: #f91;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 5px;
+        }     
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector("div");
+        if (navigator.onLine) {
+            div.innerText = "恭喜你，当前处于联网状态"
+        } else {
+            div.innerText = "你出于没有网络的异次元"
+        }
+
+        window.addEventListener("online", function () {
+            div.innerText = "恭喜你，当前处于联网状态";
+        })
+        window.addEventListener("offline", function () {
+            div.innerText = "你处于没有网络的异次元，赶紧找wifi去";
+        });
+
+    </script>
+</body>
+</html>
